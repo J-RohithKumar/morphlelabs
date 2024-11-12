@@ -1,22 +1,14 @@
 from flask import Flask
 import subprocess
 import datetime
-import os
 
 app = Flask(__name__)
 
 @app.route('/htop')
 def htop():
-    # Get the system username
     username = "Rohith Kumar Jupalle"
-
-    # Get the current server time in IST
     ist_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
-
-    # Get 'top' command output
     top_output = subprocess.getoutput("top -bn1 | head -20")
-
-    # Render the output as HTML
     response = f"""
     <html>
         <head><title>HTOP Endpoint</title></head>
