@@ -7,15 +7,18 @@ app = Flask(__name__)
 @app.route('/htop')
 def htop():
     username = "Rohith Kumar Jupalle"
+    
     ist_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     top_output = subprocess.getoutput("top -bn1 | head -20")
     response = f"""
     <html>
         <head><title>HTOP Endpoint</title></head>
         <body>
-            <h2>Name: Your Full Name</h2>
-            <h3>Username: {username}</h3>
+            
+            <h3>Name: {username}</h3>
+            <h2>user: codespace</h2>
             <h3>Server Time (IST): {ist_time}</h3>
+            <h2>TOP Output:</h2>
             <pre>{top_output}</pre>
         </body>
     </html>
